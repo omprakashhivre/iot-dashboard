@@ -33,13 +33,13 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
     if (authData) {
       setUser(authData)
-      // If user is on login page but authenticated, redirect to dashboard
-      if (pathname === "/login") {
+      // If user is on login or register page but authenticated, redirect to dashboard
+      if (pathname === "/login" || pathname === "/register") {
         router.replace("/dashboard")
       }
     } else {
       // If user is not authenticated and trying to access protected route
-      if (pathname !== "/login" && pathname !== "/") {
+      if (pathname !== "/login" && pathname !== "/register" && pathname !== "/") {
         router.replace("/login")
       }
     }

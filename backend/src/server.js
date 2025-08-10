@@ -40,7 +40,7 @@ async function start() {
   // start mock generator which writes to DB and emits updates
   const stopMock = startMockGenerator(io);
 
-  server.listen(port, () => {
+  server.listen(port,"0.0.0.0", () => {
     logger.info(`Server listening on port ${port}`);
     logger.info('Socket.IO ready at /');
   });

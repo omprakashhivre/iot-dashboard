@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const createApp = require('../src/app');
 const User = require('../src/models/user.model');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 let mongod;
 let app;

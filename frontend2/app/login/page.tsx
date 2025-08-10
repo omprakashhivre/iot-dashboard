@@ -63,7 +63,11 @@ export default function LoginPage() {
 
   // Don't render login form if user is authenticated
   if (isAuthenticated) {
-    return null
+        return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+      </div>
+    )
   }
 
   return (
@@ -101,7 +105,7 @@ export default function LoginPage() {
                 </Label>
                 <Input
                   id="email"
-                  type="email"
+                  type="text"
                   placeholder="admin@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -156,9 +160,9 @@ export default function LoginPage() {
               </p>
             </div>
 
-            <div className="mt-4 text-center">
+            {/* <div className="mt-4 text-center">
               <p className="text-xs text-slate-500">Demo credentials: admin@example.com / user@example.com</p>
-            </div>
+            </div> */}
           </CardContent>
         </Card>
       </div>

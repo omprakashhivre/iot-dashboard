@@ -2,6 +2,7 @@
 const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const { jwtSecret } = require('../config');
+const bcrypt = require('bcryptjs');
 
 // POST /auth/login
 async function login(req, res) {
@@ -46,8 +47,9 @@ async function register(req, res) {
     if (role && req.user && req.user.role === 'admin') {
       userRole = role;
     }
-
-    const newUser = new User({ username, password, role: userRole });
+    const saltRounds = 10;
+    const userPass = await bcrypt.hash(password, saltRounds);
+    const newUser = new User({ username, passwordHash: userPass, role: userRole });
     await newUser.save();
 
     const token = jwt.sign(
